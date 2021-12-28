@@ -50,6 +50,17 @@ def menu(event):
     canvas.delete("all")
     canvas.create_image(675,445,image=img13)
     canvas.create_text(320,180,text="1",font=('',55,'bold'),tags='play')
+    canvas.create_text(550,180,text="2",font=('',55,'bold'),tags='play')
+    canvas.create_text(780,180,text="3",font=('',55,'bold'),tags='play')
+    canvas.create_text(1010,180,text="4",font=('',55,'bold'),tags='play')
+    canvas.create_text(320,315,text="5",font=('',55,'bold'),tags='play')
+    canvas.create_text(550,315,text="6",font=('',55,'bold'),tags='play')
+    canvas.create_text(780,315,text="7",font=('',55,'bold'),tags='play')
+    canvas.create_text(1010,315,text="8",font=('',55,'bold'),tags='play')
+    canvas.create_text(320,450,text="9",font=('',55,'bold'),tags='play')
+    canvas.create_text(550,450,text="10",font=('',55,'bold'),tags='play')
+    canvas.create_text(780,450,text="11",font=('',55,'bold'),tags='play')
+    canvas.create_text(1010,450,text="12",font=('',55,'bold'),tags='play')
     canvas.create_text(120,650,text="BACK",font=('verdana',35,'bold'),tags='backFromLevel',fill="white")
 
 #Rule of game
