@@ -1,5 +1,7 @@
 import tkinter as tk
+from winsound import*
 import random
+import winsound
 
 root = tk.Tk()
 root.geometry('1350x890')
@@ -41,6 +43,7 @@ def startGame():
     canvas.create_text(822.5,385,text="START",font=('verdana',25,'bold'),tags='start')
     canvas.create_text(527.5,385,text="RULE",font=('verdana',25,'bold'),tags='rule')
     button1.config(height=2, width=10,bg='red')
+    winsound .PlaySound("sound\level.wav",winsound.SND_FILENAME | winsound.SND_ASYNC)
     # Display Buttons
     canvas.create_window( 0, 0, anchor = "nw",window = button1)
 startGame()
@@ -75,6 +78,8 @@ canvas.tag_bind("rule","<Button-1>",rule)
 # count down number before start game# Create and delete
 def de_num3():
     canvas.delete("num3")
+    winsound .PlaySound("sound\count down.wav",winsound.SND_FILENAME | winsound.SND_ASYNC)
+
 def num_3():
     canvas.create_image(300,150,image=num3,anchor = 'nw',tags="num3")
 def de_num2():
@@ -95,6 +100,7 @@ def de_tg():
         create_car3()
         displaylf()
         moveDownEn_cn()
+        winsound .PlaySound("sound\play.mp3",winsound.SND_FILENAME | winsound.SND_ASYNC)
 
 def tg():
     canvas.create_image(110,150,image= text_go,anchor = 'nw',tags="tg")
@@ -102,15 +108,12 @@ def tg():
 #start game after count down number 
 def startOurGame(event):
     canvas.create_image(675,445,image=img12)
-    # canvas.create_rectangle(920,520,1090,575,fill="red",outline="")
-    # canvas.create_rectangle(1130,520,1290,575,fill="red",outline="")
-    # canvas.create_text(1005,547.5,text="BACK",font=('verdana',25,'bold'),tags='backForPlaying')
-    # canvas.create_text(1210,547.5,text="EXIT",font=('verdana',25,'bold'),tags='play')
 
     button1 = tk.Button( root, text = "Exit",font=20,command=root.destroy)
     button1.config(height=2, width=30,bg='red')
     # Display Buttons
     canvas.create_window( 970, 520, anchor = "nw",window = button1)
+
     canvas.after(1000,num_3)
     canvas.after(2500,de_num3)
     canvas.after(3500,num_2)
@@ -119,6 +122,8 @@ def startOurGame(event):
     canvas.after(6500,de_num1)
     canvas.after(7500,tg)
     canvas.after(8500,de_tg)
+    winsound .PlaySound("sound\car.wav",winsound.SND_FILENAME | winsound.SND_ASYNC)
+
 
 
 #Function for back to level page
@@ -140,6 +145,7 @@ def car_player():
     global playerCar
     if life>0 and score<100:
         playerCar = canvas.create_image(350,350, image = car, anchor = 'nw')
+
 
 
 #Function for create the coins
@@ -212,6 +218,7 @@ def creash():
         positioncoinSX = positioncoinS[0]
         positioncoinSY = positioncoinS[1]
         if (positionXPlayercar-14 < positioncoinSX and positionXPlayercar +66 > positioncoinSX) and (positioncoinSY>positionYPlayercar and positioncoinSY<positionYPlayercar+80):
+            winsound .PlaySound("sound\crahs-coins-mixkit-bonus-earned-in-video-game-2058.wav",winsound.SND_FILENAME | winsound.SND_ASYNC)
             de_coins()  
             score += 10
             displaysc()
@@ -219,6 +226,7 @@ def creash():
         positionXcar1 = positioncar1[0]
         positionYcar1 = positioncar1[1]
         if (positionXcar1 > positionXPlayercar-50 and positionXcar1 <positionXPlayercar+50) and (positionYcar1 > positionYPlayercar-90 and positionYcar1<positionYPlayercar+30):
+            winsound .PlaySound("sound\metCar.wav",winsound.SND_FILENAME | winsound.SND_ASYNC)
             de_car1()
             life -= 1
             displaylf()
@@ -226,6 +234,7 @@ def creash():
         positionXcar2 = positioncar2[0]
         positionYcar2 = positioncar2[1]
         if (positionXcar2 > positionXPlayercar-50 and positionXcar2 <positionXPlayercar+50) and (positionYcar2 > positionYPlayercar-90  and positionYcar2<positionYPlayercar+30):
+            winsound .PlaySound("sound\metCar.wav",winsound.SND_FILENAME | winsound.SND_ASYNC)
             de_car2()
             life -= 1
             displaylf()
@@ -233,18 +242,20 @@ def creash():
         positioncar3X = positioncar3[0]
         positioncar3Y = positioncar3[1]
         if (positioncar3X > positionXPlayercar-50 and positioncar3X <positionXPlayercar+50) and (positioncar3Y > positionYPlayercar-90  and positioncar3Y<positionYPlayercar+30):
+            winsound .PlaySound("sound\metCar.wav",winsound.SND_FILENAME | winsound.SND_ASYNC)
             de_car3()
             life -= 1
             displaylf()
     elif score==100:
         canvas.delete('all')
+        winsound .PlaySound("sound\gameOver.wav",winsound.SND_FILENAME | winsound.SND_ASYNC)
         canvas.create_image(0,0,image=gameWin,anchor = 'nw',tags="num1")
         # canvas.create_text(120,650,text="BACK",font=('verdana',35,'bold'),tags='backForPlaying',fill="white")
 
     elif life==0:
         canvas.delete('all')
+        winsound .PlaySound("sound\gameOver.wav",winsound.SND_FILENAME | winsound.SND_ASYNC)
         canvas.create_image(0,0,image=gameOver,anchor = 'nw',tags="num1")
-        # canvas.create_text(120,650,text="BACK",font=('verdana',35,'bold'),tags='again',fill="white")
         notLostOrWin=False
 
 
@@ -254,6 +265,7 @@ def moveDownEn_cn():
     canvas.move(car_1,0,2)
     canvas.move(car_2,0,3)
     canvas.move(car_3,0,4)
+
     creash()
     #we check if the position of coins or car enemy more than 590 we will delete it 
     posicoins = canvas.coords(coinS)
